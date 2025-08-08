@@ -38,20 +38,19 @@ export const Header = () => {
       </div>
 
       {/* Main navigation */}
-      <nav className="container mx-auto px-4 pt-0 pb-0">
-        <div className="flex flex-col md:flex-row md:items-center min-h-[80px] h-full">
+      <nav className="container mx-auto px-4">
+        <div className="flex justify-between items-center min-h-[80px]">
           <div className="flex items-center space-x-2">
-            
-              <div className="w-10 h-10 bg-medical-blue rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">T</span>
-              </div>
+            <div className="w-10 h-10 bg-medical-blue rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-lg">T</span>
+            </div>
             <h1 className="text-xl md:text-2xl font-bold text-medical-blue flex items-center">
               <span className="text-medical-red">T</span>hyrocare
             </h1>
           </div>
 
           {/* Desktop Menu and Auth Buttons */}
-          <div className="hidden md:flex items-center justify-between w-full ml-10">
+          <div className="hidden md:flex items-center">
             <div className="flex items-center space-x-10">
               {menuItems.map((item) => (
                 <Link 
@@ -64,7 +63,7 @@ export const Header = () => {
               ))}
             </div>
             
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 ml-10">
               <ThemeToggle />
               <Button variant="medical-outline" size="sm" asChild>
                 <Link to="/admin">
@@ -82,34 +81,36 @@ export const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </Button>
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border">
+          <div className="md:hidden pb-4 border-t">
             <div className="flex flex-col space-y-2 pt-4">
               {menuItems.map((item) => (
                 <Link 
                   key={item._id}
                   to={item.path} 
-                  className="text-foreground hover:text-medical-blue transition-colors py-2 px-4 border-b"
+                  className="text-foreground hover:text-medical-blue transition-colors py-2 px-4 rounded-md"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.title}
                 </Link>
               ))}
               
-              {/* Theme toggle and auth buttons moved below menu items */}
-              <div className="flex flex-col space-y-2 pt-4 px-4 mt-6">
-                <div className="flex justify-center pb-2">
+              <div className="border-t my-2"></div>
+
+              <div className="flex flex-col space-y-2 pt-2 px-4">
+                <div className="flex justify-center py-2">
                   <ThemeToggle />
                 </div>
                 <Button variant="medical-outline" size="sm" className="w-full" asChild>

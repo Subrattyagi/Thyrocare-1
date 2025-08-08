@@ -14,14 +14,13 @@ export const Footer = () => {
     <footer className="bg-gray-900 text-white">
       {/* Main footer content */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              
-                <div className="w-10 h-10 bg-medical-blue rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">T</span>
-                </div>
+            <div className="flex items-center space-x-2 justify-center md:justify-start">
+              <div className="w-10 h-10 bg-medical-blue rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-lg">T</span>
+              </div>
               <h3 className="text-xl font-bold text-medical-blue flex items-center">
                 {siteSettings.websiteName && (
                   <>
@@ -35,7 +34,7 @@ export const Footer = () => {
               We provide high-quality online medical services by trusted physicians.
               You can use our medical consultation services safely anytime, anywhere.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center md:justify-start">
               <div className="flex items-center space-x-2 text-sm">
                 <Shield className="w-4 h-4 text-medical-blue" />
                 <span>Safe & Secure</span>
@@ -47,17 +46,14 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Packages -- YAHAN CHANGES KIYE GAYE HAIN -- */}
+          {/* Packages */}
           <div className="space-y-4">
             <h4 className="text-lg font-bold text-medical-blue">Packages</h4>
             <ul className="space-y-2 text-sm text-gray-300">
-              {/* Change 1: Check if 'services' array exists before mapping */}
               {services?.slice(0, 6).map((service) => (
-                // Change 2: Check if the individual 'service' object is not null
                 service && (
                   <li key={service.id}>
                     <Link to={`/service/${service.id}`} className="hover:text-white transition-colors">
-                      {/* Change 3: Check if 'service.title' exists before using it */}
                       {service.title && service.title.length > 30
                         ? service.title.substring(0, 30) + '...'
                         : service.title}
@@ -85,15 +81,15 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-bold text-medical-blue">Contact Us</h4>
             <div className="space-y-3 text-sm">
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 justify-center md:justify-start">
                 <Phone className="w-4 h-4 text-medical-blue" />
                 <span>{contactInfo.phone}</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 justify-center md:justify-start">
                 <Mail className="w-4 h-4 text-medical-blue" />
                 <span>{contactInfo.email}</span>
               </div>
-              <div className="flex items-start space-x-2">
+              <div className="flex items-start space-x-2 justify-center md:justify-start">
                 <MapPin className="w-4 h-4 text-medical-blue mt-0.5" />
                 <div>
                   <p>{contactInfo.address}</p>

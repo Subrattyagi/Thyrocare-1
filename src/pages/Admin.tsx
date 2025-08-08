@@ -570,7 +570,8 @@ export const Admin = () => {
       </div>
 
       <Tabs defaultValue="services" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-8 bg-gray-100">
+          <div className="overflow-x-auto pb-2">
+            <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 bg-gray-100">
               <TabsTrigger value="services">Services</TabsTrigger>
               <TabsTrigger value="contact">Contact Info</TabsTrigger>
               <TabsTrigger value="menu">Menu</TabsTrigger>
@@ -580,9 +581,10 @@ export const Admin = () => {
               <TabsTrigger value="global-settings">Global</TabsTrigger>
               <TabsTrigger value="consultations">Consultations</TabsTrigger>
             </TabsList>
+          </div>
 
         <TabsContent value="services" className="space-y-6">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <h2 className="text-2xl font-bold">Service Management</h2>
             <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
               <DialogTrigger asChild>
@@ -600,9 +602,9 @@ export const Admin = () => {
             </Dialog>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => (
-              <Card key={service.id} className="relative">
+              <Card key={service.id} className="relative flex flex-col">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div>
